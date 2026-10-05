@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Datasets
+*.csv
+
+# Logs
+*.log
+
+# ML models
+*.safetensors
+*.pkl
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
