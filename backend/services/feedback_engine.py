@@ -1,3 +1,4 @@
+# Fixed syntax
 import re
 from typing import List, Dict, Any, Optional
 from backend.models.schemas import IssueDetail
