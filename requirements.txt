@@ -3,8 +3,8 @@
 # Install with:
 #     pip install -r requirements.txt
 #
-# After installing, download the spaCy model the backend uses at startup:
-#     python -m spacy download en_core_web_md
+# After installing, download the lightweight spaCy model used at startup:
+#     python -m spacy download en_core_web_sm
 #
 # WeasyPrint (used for PDF export) also needs system libraries on Linux:
 #     sudo dnf install -y cairo pango gdk-pixbuf2 libffi    # Fedora
@@ -19,7 +19,6 @@ python-dotenv>=1.0
 
 # ── Backend: NLP / ML ──
 spacy>=3.7,<4.0
-sentence-transformers>=2.5
 numpy>=1.26
 rapidfuzz>=3.6
 
