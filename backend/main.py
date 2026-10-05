@@ -9,7 +9,7 @@ from backend.core.config import(
     APP_TITLE, 
     APP_VERSION, 
     SPACY_MODEL_PRIMARY, 
-    SPACY_MODEL_SECONDARY, SENTENCE_TRANSFORMER_MODEL
+    SPACY_MODEL_SECONDARY
 )
 from backend.api.routes import router
 
@@ -29,12 +29,12 @@ async def lifespan(app:FastAPI):
         app.state.nlp = spacy.load(SPACY_MODEL_SECONDARY)
         logger.info(f'Loaded {SPACY_MODEL_SECONDARY} (fallback)')
 
-    logger.info(f'Loading SentenceTransformer: {SENTENCE_TRANSFORMER_MODEL}')
-    from sentence_transformers import SentenceTransformer
-    app.state.embedder = SentenceTransformer(SENTENCE_TRANSFORMER_MODEL)
-    logger.info(f'Loaded {SENTENCE_TRANSFORMER_MODEL}')
+    # SentenceTransformer/PyTorch is intentionally not loaded here because
+    # the Render free tier has a 512 MB RAM limit. Similarity operations
+    # use a lightweight token-based cosine similarity implementation.
+    app.state.embedder = None
 
-    logger.info('All models loaded. API is ready to serve requests.')
+    logger.info('All lightweight models loaded. API is ready to serve requests.')
 
     yield
 
